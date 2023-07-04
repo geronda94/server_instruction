@@ -1,0 +1,6 @@
+После входа в удаленный компьютер
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo apt-get install mc ufw nginx
