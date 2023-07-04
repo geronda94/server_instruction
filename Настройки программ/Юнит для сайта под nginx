@@ -1,0 +1,23 @@
+sudo systemctl edit --force --full domstroi
+sudo systemctl enable domstroi
+sudo systemctl start domstoi
+sudo systemctl status domstoi
+
+
+
+
+[Unit]
+Description=Stroimarket gunicorn instance
+After=network.target
+
+[Service]
+User=goga
+Group=www-data
+WorkingDirectory=/home/goga/git/stroi_mag
+Environment="PATH=/home/goga/git/stroi_mag/venv/bin"
+ExecStart=/home/goga/git/stroi_mag/venv/bin/gunicorn --workers 5 --bind unix:gunicorn.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+
+

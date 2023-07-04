@@ -1,0 +1,14 @@
+[Unit]
+Description=Stroimarket aiogram3 service bot
+After=network.target
+
+[Service]
+User=goga
+WorkingDirectory=/home/goga/git/stroi_mag
+Environment="PATH=/home/goga/git/stroi_mag/venv/bin"
+ExecStart=/home/goga/git/stroi_mag/venv/bin/python3.11 /home/goga/git/stroi_mag/bot.py
+
+[Install]
+WantedBy=multi-user.target
+
+
