@@ -62,9 +62,21 @@ sudo ufw enable - добавляем фаервол в автозагрузку 
 
 
 
-
-
 ###Юниты
+/run/systemd - тут лежат файлы созданные при установке системы
+/etc/systemd - тут файл которые установил администратор
+/etc/systemd/system - тут хранятся непосредсвенно конфигурации\юниты но не стоит их редактировать вручную
+/etc/apt/sources.list.d - в этой папке хранится файл для компиляции всех настроек перед запуском systemd через systemctl
+
+sudo systemctl edit --force --full stroimarket - создаем юнит если его не существует строймаркет -название будущего юнита
+sudo systemctl edit  --full stroimarket - редактируем юнит 
+sudo systemctl start stroimarket - запускаем службу
+sudo systemctl status stroimarket - Если нет ошибок то покажет статус актив(зеленным цветом)
+sudo systemctl enable stroimarket
+sudo systemctl revert unit_name - откатываем измененя
+
+(Пример конфигурационного файла для сайта под gunicorn и для бота под aiogram в  папке /Настройки программ)
+
 
 
 
