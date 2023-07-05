@@ -17,21 +17,21 @@ psql
 \q  - выход из консоли  
 
 
-создать БД(не в консоли)
+создать БД(через psql)
 createdb "name_DB"
 
 
-удаление БД(не в консоли) 
+удаление БД(через psql)
 dropdb test_db
 
 
 вывод списка пользователей
  \du
  задаем пароль суперпользователя
- ALTER USER postgres WITH PASSWORD '19941994';
+ ALTER USER postgres WITH PASSWORD '11111111';
 
 создаем пользователя и задаем пароль
-CREATE USER geronda WITH PASSWORD 'Geronda94.';
+CREATE USER geronda WITH PASSWORD '1111';
 
 даем созданному пользователю права суперпользователя
 ALTER USER geronda WITH SUPERUSER;
