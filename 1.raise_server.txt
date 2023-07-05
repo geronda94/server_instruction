@@ -1,9 +1,9 @@
 После входа в удаленный компьютер
 
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 
-sudo apt-get install mc ufw nginx curl wget rsync zip unzip
+sudo apt install mc ufw nginx curl wget rsync zip unzip
 sudo apt install landscape-common
 
 Часовой пояс
@@ -26,6 +26,46 @@ cd Python-3.11.4
 make -j$(nproc)
 
 sudo make altinstall
+
+
+Настройка фаервола UFW 
+Ни в коем случае не запускать этот фаервол без его настройки
+
+sudo nano /etc/default/ufw 
+тут проверяем чтобы строчка была в таком положении
+IPV6=yes
+
+
+#####Если не нужно запускать тестовый запуск сайта игнорируем этот блок
+sudo nano /etc/ufw/applications.d/flask  - создаем этот файл и вставляем туда:
+[Flask]
+title=Flask server
+description=Flask test, do not use it in real project
+ports=5000/tcp
+
+sudo ufw app list - проверяем чтобы созданная конфигурация появилась в списке приложений
+sudo ufw allow Flask
+sudo ufw delete allow Flask -забираем разрешение
+
+
+переходим в окружение сайта и через пип утсанавливаем гуникорн
+pip install gunicorn
+
+gunicorn --bin 0.0.0.0:5000 wsgi:app  - эта команда запускает приложение через гуникорн через тестовый порт
+ который определили в этом блоке
+###############################################################
+
+sudo ufw allow OpenSSH - Включаем необходимое для подлкючения по ssh приложение, без этого ни в коем случае не включать фаервол
+sudo ufw allow 'Nginx Full' - Разрешаем работу nginx 
+
+sudo ufw enable - добавляем фаервол в автозагрузку и перезапускаем ситему
+
+
+
+
+
+###Юниты
+
 
 
 
