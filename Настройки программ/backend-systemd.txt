@@ -1,0 +1,25 @@
+
+Создайте файл службы:
+sudo nano /etc/systemd/system/uvicorn.service
+Пример службы:
+
+[Unit]
+Description=Uvicorn FastAPI Service
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/path/to/your/app
+ExecStart=/path/to/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+После создания файла службы активируйте её:
+
+
+sudo systemctl daemon-reload
+sudo systemctl start uvicorn
+sudo systemctl enable uvicorn
+
