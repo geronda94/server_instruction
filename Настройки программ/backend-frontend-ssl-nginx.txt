@@ -18,10 +18,7 @@ server {
     ssl_certificate /etc/letsencrypt/live/it-igor.click/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/it-igor.click/privkey.pem;
 
-    # Рекомендуемые настройки SSL
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384';
-    ssl_prefer_server_ciphers off;
+
 
     # Проксирование запросов к API
     location /api/ {
