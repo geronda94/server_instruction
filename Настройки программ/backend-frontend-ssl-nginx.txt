@@ -1,3 +1,17 @@
+Создайте или отредактируйте конфигурационный файл для Nginx. Обычно он располагается по пути 
+/etc/nginx/sites-available/fastapi.conf
+
+sudo ln -s /etc/nginx/sites-available/fastapi.conf /etc/nginx/sites-enabled/
+Затем проверьте синтаксис конфигурации Nginx:
+
+sudo nginx -t
+Если ошибок нет, перезапустите Nginx:
+
+sudo systemctl restart nginx
+
+
+
+
 # HTTP сервер для перенаправления на HTTPS
 server {
     listen 80;
